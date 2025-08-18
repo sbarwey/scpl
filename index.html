@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Page title + description -->
+  <title>{{LAB_NAME}}</title>
+  <meta name="description" content="{{LAB_NAME}} — We develop algorithms at the intersection of machine learning, high-performance computing, and the natural sciences.">
+
+  <!-- Banner font (Montserrat) -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ==========================================================================
+     Header (site banner with logo + navigation)
+     ========================================================================== -->
+<header>
+  <nav class="nav">
+    <!-- Brand: logo + lab name -->
+    <a class="brand" href="index.html">
+      <img src="images/lab-logo.png" alt="Lab logo for {{LAB_NAME}}">
+      <span class="lab-name">Scientific Computing and Propulsion Laboratory</span>
+    </a>
+
+    <!-- Right-side navigation menu -->
+    <div class="menu">
+      <a href="index.html">Home</a>
+      <a href="team.html">Team</a>
+      <a href="research.html">Research</a>
+      <a href="publications.html">Publications</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ==========================================================================
+     Hero Section (full-screen background with shaded content panel)
+     ========================================================================== -->
+<main class="hero" style="background-image: url('images/background.jpg');">
+  <div class="hero-content">
+    <div class="wrap">
+      
+      <!-- Unified shaded panel (glass effect from style.css) -->
+      <section class="hero-panel">
+        
+        <!-- Lab title -->
+        <!-- <h1 class="hero-title">
+          <span class="lab-name">Scientific Computing and Propulsion Laboratory</span>
+        </h1> -->
+
+        <!-- Optional subtitle (currently commented out) -->
+        <!-- <p class="hero-subtitle">University of Notre Dame, Department of Aerospace and Mechanical Engineering</p> -->
+
+        <!-- Lead paragraph (justified, improved line-height in CSS) -->
+        <p class="hero-lead">
+          Welcome to the Scientific Computing and Propulsion Laboratory at the 
+          University of Notre Dame. We will be located in McCourtney Hall as part of the Aerospace and Mechanical Engineering Department
+          (pictured in the background). Our work focuses on developing numerical models of complex fluid flows, 
+          with particular emphasis on high-speed reacting flows and combustion. At the core of our research is model development rooted in 
+          artificial intelligence (AI), scientific machine learning (SciML), and computational fluid dynamics (CFD). 
+          Across these areas, we rely extensively on high-performance computing and place special emphasis on designing 
+          algorithms that exploit extreme scales in both data and computation. Our goal is to harness AI-enabled modeling 
+          advances to push the boundaries of design and deepen the physical understanding of next-generation power and propulsion 
+          systems across a wide range of devices, including detonation engines, scramjets, and gas turbines. 
+          Contact us at <a href="mailto:sbarwey@nd.edu">sbarwey@nd.edu</a> for more information or if you are interested in joining the group.
+          See more at the links below. 
+        </p>
+
+        <!-- Hiring Notice (sticks out under the lead text) -->
+        <div class="notice notice-hiring" role="note" aria-label="Hiring Notice">
+          <p>
+            <strong>SCPL has a number of projects for which we are actively recruiting PhD students,</strong>
+            with a start date for the Fall 2026 term. Project topics include scientific machine
+            learning for high-speed reacting flows, in-situ CFD+ML modeling, and AI-based CFD workflow/algorithm design.
+            Prospective students should have at least a Bachelor’s degree in Aerospace, Mechanical, or Chemical
+            Engineering (or similar), with preferred candidates having a Master’s degree in these disciplines.
+          </p>
+          <p class="notice-req">
+            If you are interested, send a CV to <a href="mailto:sbarwey@nd.edu">sbarwey@nd.edu</a> with any additional info you think would be relevant.
+          </p>
+        </div>
+
+        <!-- Action buttons -->
+        <div class="hero-actions">
+          <a class="btn hero-btn" href="team.html">Team ↗</a>
+          <a class="btn hero-btn" href="research.html">Research ↗</a>
+          <a class="btn hero-btn" href="publications.html">Publications ↗</a>
+        </div>
+
+        <!-- New landing image -->
+        <div class="hero-image">
+          <img src="images/landing-image-1.png" alt="Landing image 1">
+          <img src="images/landing-image-2.png" alt="Landing image 2">
+          <img src="images/landing-image-3.png" alt="Landing image 3">
+        </div>
+
+      </section>
+    </div>
+  </div>
+</main>
+
+<!-- Small JS: inserts current year -->
+<script src="js/site.js"></script>
+</body>
+</html>

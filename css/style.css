@@ -1,0 +1,349 @@
+/* ==========================================================================
+   SCPL — Site styles
+   Clean, commented, and friendly to tweak
+   ==========================================================================
+
+   HOW TO TUNE QUICKLY  (look for "EDIT HERE"):
+   - Brand & banner
+       --logo-h, --nav-h, --gutter, --menu-link, --menu-link-hover
+   - Palette & shadows
+       --bg, --surface, --text, --muted, --accent, --border, --shadow
+   - Hero & panel visuals
+       --hero-h, --hero-overlay, --panel-alpha, --maxw, --panel-px, --panel-py
+   - Landing slider
+       --hero-img-w, --hero-img-duration
+
+   Notes:
+   • Header spans full window width. The small side margin is --gutter.
+   • Menu links in the header are BLACK by default and don’t inherit blue.
+   • Links inside the glass hero-panel are forced to bold white + underline.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   DESIGN TOKENS — EDIT HERE
+   ========================================================================== */
+   :root{
+    /* ---- Palette (EDIT HERE) ---- */
+    --bg:#f7f8fc;
+    --surface:#ffffff;
+    --text:#0f172a;
+    --muted:#46506b;
+    --border:#e6e8f0;
+    --accent:#2459f7;              /* global link color (outside hero-panel) */
+    --accent-2:#17b897;            /* subtle hover tint for hero buttons */
+  
+    /* Header link colors (banner, top-right) — EDIT HERE */
+    --menu-link:#000;              /* black menu links */
+    --menu-link-hover:#555;        /* softer gray on hover */
+  
+    /* ---- Radii & Shadows (EDIT HERE) ---- */
+    --radius:16px;
+    --shadow:0 8px 28px rgba(15,23,42,.08);
+  
+    /* ---- Layout knobs (EDIT HERE) ---- */
+    --maxw:1100px;                 /* content width for main sections */
+    --nav-h:58px;                  /* banner height */
+    --logo-h:28px;                 /* logo height in banner */
+    --gutter:22px;                 /* small side padding for full-width header */
+  
+    /* ---- Hero (EDIT HERE) ---- */
+    --hero-h:100vh;                /* “full screen” hero height */
+    --hero-overlay:.20;            /* dark overlay behind glass panel */
+    --panel-alpha:.25;             /* glass panel opacity */
+    --panel-px:24px;               /* hero-panel horizontal padding */
+    --panel-py:22px;               /* hero-panel vertical padding */
+  
+    /* ---- Landing image slider (EDIT HERE) ---- */
+    --hero-img-w:.80;              /* image width as fraction of hero-panel */
+    --hero-img-duration:15s;       /* full cycle for 3 images */
+  }
+  
+  
+  /* ==========================================================================
+     BASE / RESET
+     ========================================================================== */
+  *{ box-sizing:border-box }
+  html,body{
+    margin:0; padding:0;
+    background:var(--bg); color:var(--text);
+    font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  }
+  a{ color:var(--accent); text-decoration:none }
+  a:hover{ text-decoration:underline }
+  img{ max-width:100%; display:block }
+  
+  /* Keep layout width stable when scrollbar appears */
+  html{ scrollbar-gutter: stable both-edges; }
+  
+  /* Respect reduced‑motion preferences */
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition:none !important; }
+  }
+  
+  
+  /* ==========================================================================
+     HEADER / NAV (full‑width with a small buffer)
+     ========================================================================== */
+  header{
+    background:#fff;
+    border-bottom:1px solid var(--border);
+    position:sticky; top:0; z-index:40;
+    min-height:var(--nav-h); width:100%;
+  }
+  
+  /* Full width row, tiny side padding from --gutter */
+  .nav{
+    width:100%; max-width:100%;
+    margin:0; padding:12px var(--gutter);
+    display:flex; align-items:center; gap:16px;
+    justify-content:space-between;          /* brand hugs left, menu hugs right */
+  }
+  
+  .brand{ display:flex; align-items:center; gap:12px; color:#000 }
+  .brand img{ height:var(--logo-h); width:auto; border-radius:6px; }
+  .nav .brand span{ font-size:1.5rem; font-weight:500; white-space:normal; }
+  
+  /* Menu links are BLACK, not accented blue */
+  .menu{ display:flex; gap:16px; }
+  .menu a{
+    color:var(--menu-link);
+    font-size:1.2rem; font-weight:400;
+    text-decoration:none;
+  }
+  .menu a:hover{ color:var(--menu-link-hover); }
+  
+  /* Banner font family */
+  .nav .brand span, .nav .menu a{
+    font-family:'Montserrat', Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    letter-spacing:.2px; font-weight:400;
+  }
+  
+  /* Responsive wrap for smaller screens */
+  @media (max-width: 860px){
+    .nav{ flex-wrap:wrap; row-gap:8px; }
+    .menu{ order:2; width:100%; justify-content:flex-start; flex-wrap:wrap; gap:12px; }
+  }
+  @media (max-width: 520px){
+    .nav{ justify-content:center; }
+    .brand{ flex:1 1 100%; justify-content:center; }
+    .menu{ justify-content:center; }
+  }
+  
+  
+  /* ==========================================================================
+     BUTTONS
+     ========================================================================== */
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:10px 14px; border-radius:12px;
+    border:1px solid var(--border); background:var(--surface);
+    box-shadow:var(--shadow);
+  }
+  .btn:hover{ border-color:#cfd6e3 }
+  
+  /* Themed buttons used on the hero glass panel */
+  .hero-btn{
+    background:rgba(255,255,255,0.08); color:#fff;
+    border:1px solid rgba(255,255,255,0.25);
+    border-radius:12px; padding:12px 22px;
+    font-size:1.1rem; font-weight:600;
+    transition:background .25s, border-color .25s, transform .15s;
+    backdrop-filter:blur(4px);
+  }
+  .hero-btn:hover{
+    background:rgba(255,255,255,0.18);
+    border-color:rgba(255,255,255,0.45);
+    transform:translateY(-2px);
+    box-shadow:0 4px 12px rgba(0,0,0,0.25);
+  }
+  .hero-btn:active{ transform:translateY(0) }
+  .hero-actions .hero-btn:hover{
+    background:color-mix(in srgb, var(--accent-2) 12%, rgba(255,255,255,0.18));
+  }
+  @media (max-width:560px){
+    .hero-actions{ flex-direction:column; align-items:flex-start; }
+    .hero-actions .hero-btn{ width:100%; justify-content:center; }
+  }
+  
+  
+  /* ==========================================================================
+     HERO (background + glass panel)
+     ========================================================================== */
+  .hero{
+    position:relative; min-height:var(--hero-h);
+    background-size:cover; background-position:center; background-repeat:no-repeat;
+    background-attachment:fixed;
+  }
+  .hero::after{ content:""; position:absolute; inset:0; background:rgba(0,0,0,var(--hero-overlay)); }
+  .hero-content{ position:relative; z-index:1; min-height:var(--hero-h); padding:20px 0 28px; }
+  .hero .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 18px; }
+  
+  .hero-panel{
+    background:rgba(15,23,42,var(--panel-alpha));
+    color:#fff; padding:var(--panel-py) var(--panel-px);
+    border-radius:14px; border:1px solid rgba(255,255,255,0.14);
+    box-shadow:0 16px 36px rgba(0,0,0,.28);
+    backdrop-filter:blur(8px) saturate(120%);
+    max-width:1100px; text-align:justify; line-height:1.5; overflow:hidden;
+  }
+  
+  .hero-title{ margin:0 0 6px; color:#fff; font-size:clamp(2.2rem,5vw,3.4rem); font-weight:600; line-height:1.06; }
+  .hero-subtitle{ margin:0 0 12px; color:rgba(255,255,255,.96); font-size:clamp(1rem,2.2vw,1.2rem); font-weight:500; }
+  .hero-lead{ margin:0; color:rgba(255,255,255,.92); font-size:1.2rem; }
+  .hero-actions{ display:flex; gap:12px; flex-wrap:wrap; margin-top:12px; justify-content:center; }
+  
+  @media (max-width:900px){
+    .hero{ background-attachment:scroll; }       /* better mobile perf */
+  }
+  
+  
+  /* ==========================================================================
+     NOTICE BLOCK (e.g., hiring)
+     ========================================================================== */
+  .notice{
+    margin-top:14px; padding:14px 16px 12px 48px;
+    border-radius:14px; line-height:1.45; position:relative;
+    border:1px solid rgba(255,255,255,0.28);
+    box-shadow:0 12px 28px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.05);
+    color:#fff;
+  }
+  .notice-hiring{
+    background:linear-gradient(180deg, rgba(220,38,38,0.8) 0%, rgba(185,28,28,0.8) 100%);
+  }
+  .notice-hiring::before{
+    content:"⚑"; position:absolute; left:14px; top:12px; font-size:22px;
+    filter:drop-shadow(0 2px 2px rgba(0,0,0,.25));
+  }
+  .notice-hiring::after{
+    content:""; position:absolute; left:36px; top:10px; bottom:10px;
+    width:3px; border-radius:2px; background:rgba(255,255,255,0.85); opacity:.85;
+  }
+  .notice p{ margin:0 0 6px; }
+  .notice p:last-child{ margin-bottom:0; }
+  .notice strong{ font-weight:700; }
+  .notice-req{ opacity:.95; }
+  
+  /* Ensure white links inside the notice */
+  .notice a{ color:#fff; text-decoration:underline; font-weight:700; }
+  /* Belt & suspenders: force white for all children */
+  .notice-hiring, .notice-hiring *{ color:#fff !important; }
+  
+  
+  /* ==========================================================================
+     LANDING PAGE — rotating image
+     ========================================================================== */
+  .hero-image{
+    width:calc(100% * var(--hero-img-w));
+    margin:16px auto 0; position:relative;
+    border-radius:20px; overflow:hidden;
+    border:1px solid rgba(255,255,255,0.25);
+    box-shadow:0 6px 20px rgba(0,0,0,0.35);
+  }
+  .hero-image img{
+    width:100%; height:auto; display:block; background:#fff; opacity:0;
+    animation:fade-cycle var(--hero-img-duration) infinite;
+  }
+  .hero-image img:nth-child(1){ position:relative; z-index:1; }
+  .hero-image img:nth-child(n+2){ position:absolute; inset:0; object-fit:contain; z-index:2; }
+  .hero-image img:nth-child(1){ animation-delay:0s; }
+  .hero-image img:nth-child(2){ animation-delay:calc(var(--hero-img-duration)/3); }
+  .hero-image img:nth-child(3){ animation-delay:calc(2*var(--hero-img-duration)/3); }
+  @keyframes fade-cycle{ 0%,39%,100%{opacity:0;} 6%,33%{opacity:1;} }
+  
+  
+  /* ==========================================================================
+     STANDARD LAYOUT, SECTIONS, CARDS
+     ========================================================================== */
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:24px 18px; }
+  .section{ padding:42px 0; }
+  h1,h2,h3{ line-height:1.12; margin:0 0 14px; }
+  h1{ font-size:clamp(2rem,4vw,3rem); }
+  h2{ font-size:clamp(1.6rem,3vw,2.2rem); }
+  h3{ font-size:1.15rem; }
+  p{ color:var(--muted); font-size:1.05rem; }
+  
+  .grid{ display:grid; gap:18px }
+  .grid-3{ grid-template-columns:repeat(3,1fr) }
+  .grid-2{ grid-template-columns:repeat(2,1fr) }
+  @media (max-width:900px){ .grid-3{ grid-template-columns:1fr 1fr } }
+  @media (max-width:640px){ .grid-3,.grid-2{ grid-template-columns:1fr } }
+  .card{
+    border:1px solid var(--border); background:var(--surface);
+    border-radius:var(--radius); padding:18px; box-shadow:var(--shadow);
+  }
+  
+  
+  /* ==========================================================================
+     TEAM / FACULTY
+     ========================================================================== */
+  .hero-panel .card{ background:transparent; border:none; box-shadow:none; padding:0; }
+  
+  /* Avatar | Info | Bio grid */
+  .faculty{
+    display:grid; grid-template-columns:160px 1fr 1.2fr;
+    gap:20px; align-items:start;
+  }
+  .faculty-avatar img{
+    width:150px; height:auto; border-radius:14px; box-shadow:0 4px 12px rgba(0,0,0,0.25);
+  }
+  .faculty-info{ text-align:left; }
+  .faculty-info h3{ margin:0 0 6px; font-size:1.4rem; color:#fff; }
+  .faculty-info .role{ font-size:.95rem; color:rgba(255,255,255,0.9); margin-bottom:8px; }
+  .faculty-info p{ color:rgba(255,255,255,0.85); }
+  .faculty-bio p{ color:rgba(255,255,255,0.92); font-size:1rem; line-height:1.5; margin:0; }
+  .faculty-info .links{ display:flex; gap:10px; justify-content:flex-start; }
+  
+  @media (max-width:900px){
+    .faculty{ grid-template-columns:1fr; }
+    .faculty-bio{ margin-top:12px; }
+  }
+  
+  /* Student cards */
+  .person{
+    display:grid; grid-template-columns:120px 1fr;
+    gap:16px; align-items:start; padding:8px 0;
+  }
+  .avatar{
+    width:120px; height:120px; border-radius:14px; overflow:hidden;
+    background:#eef1f9; border:1px solid rgba(255,255,255,.25);
+  }
+  .avatar img{ width:100%; height:100%; object-fit:cover; }
+  .person h3{ margin:0 0 4px; color:#fff; }
+  .person .role{ color:#fff; font-weight:600; margin-bottom:6px; }
+  .student-blurb{ margin:0; color:rgba(255,255,255,.92); line-height:1.45; }
+  
+  /* Section headers inside hero-panel */
+  .team-section{ margin-bottom:28px; }
+  .team-header{
+    font-size:1.2rem; font-weight:600; color:rgba(255,255,255,0.9);
+    margin-bottom:12px; padding-bottom:4px; border-bottom:1px solid rgba(255,255,255,0.25);
+  }
+  
+  
+  /* ==========================================================================
+     RESEARCH / PUBLICATIONS / FOOTER
+     ========================================================================== */
+  .topic{ display:flex; gap:14px; align-items:flex-start }
+  .topic .media{ min-width:180px; max-width:220px }
+  .topic .badge{ min-width:40px; height:40px; border-radius:10px;
+    display:grid; place-items:center; background:#eef2ff; border:1px solid #cdd7ff; }
+  
+  .pub-controls{ display:flex; gap:12px; flex-wrap:wrap; align-items:center }
+  .search{ flex:1; min-width:240px }
+  input[type='search'], input[type='url']{ width:100%; padding:11px 12px; border-radius:12px; border:1px solid var(--border); background:#fff; color:var(--text); }
+  .pub{ display:grid; gap:4px }
+  .pub small{ color:var(--muted) }
+  
+  footer{ border-top:1px solid var(--border); margin-top:42px; background:var(--surface); }
+  .foot{
+    max-width:var(--maxw); margin:0 auto; padding:20px 18px;
+    display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; color:var(--muted);
+  }
+  
+  
+  /* ==========================================================================
+     HERO‑PANEL LINKS — force white + underline for readability
+     ========================================================================== */
+  .hero-panel a{ color:#fff !important; font-weight:600; text-decoration:underline; }
+  .hero-panel a:hover{ color:#e5e5e5; }

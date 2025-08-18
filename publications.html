@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Publications — {{LAB_NAME}}</title>
+  <meta name="description" content="Publications from {{LAB_NAME}}. Searchable list of papers, preprints, and proceedings.">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a class="brand" href="index.html">
+      <img src="images/lab-logo.png" alt="Lab logo for {{LAB_NAME}}">
+      <span class="lab-name">Scientific Computing and Propulsion Lab</span>
+    </a>
+    <div class="menu">
+      <a href="index.html">Home</a>
+      <a href="team.html">Team</a>
+      <a href="research.html">Research</a>
+      <a href="publications.html">Publications</a>
+    </div>
+  </nav>
+</header>
+
+<main class="hero" style="background-image: url('images/background.jpg');">
+  <div class="hero-content">
+    <div class="wrap">
+      <section class="hero-panel" style="text-align:center;">
+        <p style="font-size: 1.2rem; font-weight: 500; color: white;">
+          Page coming soon. For now, refer to 
+          <a href="https://scholar.google.com/citations?user=Km7A7aAAAAAJ&hl=en&oi=ao" target="_blank" style="color:white; text-decoration: underline; font-weight:600;">
+            Google Scholar.
+          </a>
+        </p>
+      </section>
+    </div>
+  </div>
+</main>
+
+<script src="js/site.js"></script>
+
+<!-- =======================================================================
+     OLD PUBLICATIONS PAGE (kept for later) — everything below is commented out
+     =======================================================================
+
+<div class="wrap">
+  <h2>Publications</h2>
+
+  <div class="pub-controls" style="margin: 6px 0 18px">
+    <input id="pub-search" class="search" type="search" placeholder="Search by title, author, year, venue…" aria-label="Search publications" />
+    <button class="btn" id="toggle-bib">Toggle BibTeX</button>
+  </div>
+
+  <section class="section" aria-labelledby="cat-journal">
+    <h3 id="cat-journal">Journal Articles & Preprints</h3>
+    <div id="pub-list-journal" class="grid" style="gap:14px">
+
+      <article class="card pub"
+        data-title="graph transformers for turbulent flow prediction"
+        data-authors="young; lee; diaz"
+        data-year="2024"
+        data-month="apr"
+        data-venue="jmlr">
+        <div><strong>Graph Transformers for Turbulent Flow Prediction</strong></div>
+        <small>C. Young, M. Lee, R. Diaz (2024), <em>Journal of Machine Learning Research</em>.
+          <a href="#" target="_blank" rel="noopener">PDF</a> ·
+          <a href="#" target="_blank" rel="noopener">Code</a>
+        </small>
+        <details>
+          <summary>BibTeX</summary>
+<pre>@article{young2024gtflow,
+  title={Graph Transformers for Turbulent Flow Prediction},
+  author={Young, Casey and Lee, Min and Diaz, Rosa},
+  journal={Journal of Machine Learning Research},
+  year={2024}
+}</pre>
+        </details>
+      </article>
+
+      <article class="card pub"
+        data-title="vllm for multi-node scientific inference"
+        data-authors="young"
+        data-year="2023"
+        data-month="nov"
+        data-venue="joss">
+        <div><strong>vLLM for Multi‑Node Scientific Inference</strong></div>
+        <small>C. Young (2023), <em>Journal of Open Source Software</em>.
+          <a href="#" target="_blank" rel="noopener">PDF</a> ·
+          <a href="#" target="_blank" rel="noopener">Code</a>
+        </small>
+        <details>
+          <summary>BibTeX</summary>
+<pre>@article{young2023vllm,
+  title={vLLM for Multi-Node Scientific Inference},
+  author={Young, Casey},
+  journal={Journal of Open Source Software},
+  year={2023}
+}</pre>
+        </details>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="cat-conf">
+    <h3 id="cat-conf">Conference Proceedings</h3>
+    <div id="pub-list-conf" class="grid" style="gap:14px">
+
+      <article class="card pub"
+        data-title="foundation models for physics need graph inductive bias"
+        data-authors="brown; young; park"
+        data-year="2025"
+        data-month="jun"
+        data-venue="neurips">
+        <div><strong>Foundation Models for Physics Need Graph Inductive Bias</strong></div>
+        <small>A. Brown*, C. Young*, J. Park (2025), <em>NeurIPS</em>.
+          <a href="#" target="_blank" rel="noopener">PDF</a> ·
+          <a href="#" target="_blank" rel="noopener">Code</a>
+        </small>
+        <details>
+          <summary>BibTeX</summary>
+<pre>@inproceedings{brown2025fmp,
+  title={Foundation Models for Physics Need Graph Inductive Bias},
+  author={Brown, Alex and Young, Casey and Park, Jordan},
+  booktitle={NeurIPS},
+  year={2025}
+}</pre>
+        </details>
+      </article>
+
+      <article class="card pub"
+        data-title="reinforcement learning with verifiable rewards for combustion control"
+        data-authors="park; brown"
+        data-year="2024"
+        data-month="feb"
+        data-venue="icml">
+        <div><strong>Reinforcement Learning with Verifiable Rewards for Combustion Control</strong></div>
+        <small>J. Park, A. Brown (2024), <em>ICML</em>.
+          <a href="#" target="_blank" rel="noopener">PDF</a>
+        </small>
+        <details>
+          <summary>BibTeX</summary>
+<pre>@inproceedings{park2024rlvr,
+  title={Reinforcement Learning with Verifiable Rewards for Combustion Control},
+  author={Park, Jordan and Brown, Alex},
+  booktitle={ICML},
+  year={2024}
+}</pre>
+        </details>
+      </article>
+
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="foot">
+    <div>© <span id="year"></span> <span class="lab-name">Scientific Computing and Propulsion Lab</span></div>
+    <div><a href="#">Open Positions</a> · <a href="#">Code of Conduct</a></div>
+  </div>
+</footer>
+
+<script>
+const searchEl  = document.getElementById('pub-search');
+const toggleBtn = document.getElementById('toggle-bib');
+const allCards  = () => Array.from(document.querySelectorAll('.pub'));
+function normalize(s){ return (s||'').toLowerCase(); }
+function matches(card, q){
+  const t = card.dataset.title || '';
+  const a = card.dataset.authors || '';
+  const y = card.dataset.year || '';
+  const v = card.dataset.venue || '';
+  return [t,a,y,v].some(x => normalize(x).includes(q));
+}
+if (searchEl) {
+  searchEl.addEventListener('input', ()=>{
+    const q = normalize(searchEl.value);
+    allCards().forEach(c => c.style.display = q && !matches(c, q) ? 'none' : '');
+  });
+}
+if (toggleBtn) {
+  toggleBtn.addEventListener('click', ()=>{
+    allCards().forEach(c=>{
+      const d = c.querySelector('details');
+      if(d) d.open = !d.open;
+    });
+  });
+}
+const MONTHS = {jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,sept:9,oct:10,nov:11,dec:12};
+function monthNum(m){
+  if(!m) return 0;
+  const s = String(m).trim().toLowerCase();
+  if (MONTHS[s]) return MONTHS[s];
+  const n = parseInt(s,10);
+  return Number.isFinite(n) ? n : 0;
+}
+function sortContainer(containerId){
+  const container = document.getElementById(containerId);
+  if(!container) return;
+  const items = Array.from(container.children);
+  items.sort((a,b)=>{
+    const ya = parseInt(a.dataset.year||'0',10) || 0;
+    const yb = parseInt(b.dataset.year||'0',10) || 0;
+    if (ya !== yb) return yb - ya;
+    const ma = monthNum(a.dataset.month);
+    const mb = monthNum(b.dataset.month);
+    if (ma !== mb) return mb - ma;
+    const ta = (a.dataset.title||'').toLowerCase();
+    const tb = (b.dataset.title||'').toLowerCase();
+    return ta.localeCompare(tb);
+  });
+  items.forEach(el => container.appendChild(el));
+}
+document.addEventListener('DOMContentLoaded', ()=>{
+  sortContainer('pub-list-journal');
+  sortContainer('pub-list-conf');
+});
+</script>
+
+-->
+</body>
+</html>
